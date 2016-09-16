@@ -6,14 +6,14 @@ using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public class Poster : Action
+    public class Poster : Task
     {
         private const int k_LengthOfString = 25;
-        private User m_User;
+        private UserProxy m_User;
         private Schedulable m_Schedule;
         private string m_TextToPost;
 
-        public Poster(User i_User, DateTime i_ChosenDateTime, string i_TextToPost)
+        public Poster(UserProxy i_User, DateTime i_ChosenDateTime, string i_TextToPost)
         {
             m_User = i_User;
             m_Schedule = new Schedulable(i_ChosenDateTime);

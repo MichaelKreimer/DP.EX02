@@ -7,7 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public abstract class Commenter : Action
+    public abstract class Commenter : Task
     {
         public string CommentText { get; set; }
 

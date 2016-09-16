@@ -7,7 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public abstract class Liker : Action
+    public abstract class Liker : Task
     {
         public Post HandledPost { get; set; }
 

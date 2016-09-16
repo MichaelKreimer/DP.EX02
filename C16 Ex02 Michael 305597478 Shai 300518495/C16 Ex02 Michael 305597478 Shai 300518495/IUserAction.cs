@@ -5,8 +5,8 @@ using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public abstract class ActionFactory
+    interface IUserAction
     {
-        public abstract Liker CreateLiker();
+        void PostStatus(string i_TextToPost);
     }
 }

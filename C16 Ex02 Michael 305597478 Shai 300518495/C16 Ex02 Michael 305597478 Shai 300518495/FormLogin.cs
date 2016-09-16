@@ -14,14 +14,17 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
     public partial class LoginForm : Form
     {
         private BestPostFinder m_BPF = new BestPostFinder();
-        private FormFacebookConditionally m_FC = new FormFacebookConditionally();
+        private FacebookTaskFactory m_FacebookActionFactory = new FacebookTaskFactory();
+        private FormFacebookConditionally m_FC;// = new FormFacebookConditionally(m_FacebookActionFactory);
+        public static UserProxy s_LoggedInUserProxy;
 
         public LoginForm()
         {
+            m_FC = new FormFacebookConditionally(m_FacebookActionFactory);
             InitializeComponent();
         }
 
-        public static UserProxy s_LoggedInUserProxy { get; set; }
+// public static UserProxy s_LoggedInUserProxy { get; set; }
 
         private void loginAndInit()
         {
@@ -68,15 +71,14 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 MessageBox.Show(result.ErrorMessage);
             }
         }
-
         private void initUserIsLogged(LoginResult result)
         {
-            s_LoggedInUserProxy.User = result.LoggedInUser;
+            s_LoggedInUserProxy = result.LoggedInUser;
             buttonLogin.Text = "Logged!";
             buttonLogin.Enabled = false;
             buttonPost.Enabled = true;
             textBoxPost.Enabled = true;
-            pictureBoxUserProfile.LoadAsync(s_LoggedInUserProxy.User.PictureNormalURL);
+            pictureBoxUserProfile.LoadAsync(s_LoggedInUserProxy.PictureNormalURL);
             labelHelloMessage.Text = string.Format("Hello {0} !", s_LoggedInUserProxy.Name);
         }
 
@@ -92,7 +94,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void runBestPostFinderDialog()
         {
-            if (s_LoggedInUserProxy.IsUserLogged())
+            if (LoginForm.s_LoggedInUserProxy != null)
             {
                 this.Hide();
                 m_BPF.ShowDialog();
@@ -102,7 +104,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonFacebookContidional_Click(object sender, EventArgs e)
         {
-            if (s_LoggedInUserProxy.IsUserLogged())
+            if (LoginForm.s_LoggedInUserProxy != null)
             {
                 this.Hide();
                 m_FC.ShowDialog();

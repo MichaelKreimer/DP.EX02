@@ -1,29 +1,31 @@
 ﻿using FacebookWrapper.ObjectModel;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public class UserProxy
+    public class UserProxy : User
     {
-        public User User { get; set; }
-        public FacebookObjectCollection<Post> Posts { get { return User.Posts; } }
+        //    public User User {  get; set; }
 
-        public string PictureNormalURL { get { return User.PictureNormalURL; } }
-
-        public string Name { get { return User.Name; } }
-        public bool IsUserLogged()
+        public UserProxy():base()
         {
-            return User != null;
+       //     User = i_User;
         }
         public void PostStatus(string i_TextToPost)
         {
             if (i_TextToPost != string.Empty)
             {
-                User.PostStatus(i_TextToPost);
+                base.PostStatus(i_TextToPost);
             }
         }
+        //public void ClearPosts()
+        //{
+        //    Posts.Clear();
+        //}
+    
     }
 }

@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActionFactory.cs" />
+    <Compile Include="ITaskFactory.cs" />
     <Compile Include="Commenter.cs" />
     <Compile Include="CommenterByNums.cs" />
     <Compile Include="CommenterByTime.cs" />
@@ -87,11 +87,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="Action.cs" />
+    <Compile Include="IUserAction.cs" />
+    <Compile Include="Task.cs" />
     <Compile Include="Liker.cs" />
     <Compile Include="LikerByNums.cs" />
     <Compile Include="LikerByTime.cs" />
-    <Compile Include="FacebookActionFactory.cs" />
+    <Compile Include="FacebookTaskFactory.cs" />
     <Compile Include="Poster.cs" />
     <Compile Include="PostWrapper.cs" />
     <Compile Include="Program.cs" />

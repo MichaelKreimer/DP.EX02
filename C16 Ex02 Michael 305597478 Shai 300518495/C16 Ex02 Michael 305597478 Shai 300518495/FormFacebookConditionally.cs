@@ -8,17 +8,18 @@ using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using System.Threading;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
 
     public partial class FormFacebookConditionally : Form
     {
-        List<Action> actionsToRemove = new List<Action>();
+        public ITaskFactory TaskFactory { get; set; }
+        List<Task> tasksToRemove = new List<Task>();
         private bool m_IsInShown;
-        public FormFacebookConditionally()
+        public FormFacebookConditionally(ITaskFactory i_TaskFactory)
         {
+            this.TaskFactory = i_TaskFactory;
             InitializeComponent();
         }
 
@@ -59,14 +60,17 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         {
             if (m_IsInShown == false)
             {
-                this.listBoxPosts.Items.Clear();
+                listBoxPosts.Invoke(new Action(() =>
+                {
+                    this.listBoxPosts.Items.Clear();
+                }));
 
-                LoginForm.s_LoggedInUser.Posts.Clear();
+            LoginForm.s_LoggedInUserProxy.User.Clear();
 
-                LoginForm.s_LoggedInUser.ReFetch();
+                LoginForm.s_LoggedInUserProxy.ReFetch();
             }
-            
-            foreach (Post post in LoginForm.s_LoggedInUser.Posts)
+        //    LoginForm.s_LoggedInUserProxy.
+            foreach (Post post in LoginForm.s_LoggedInUserProxy.Posts)
             {
                 PostWrapper postw = new PostWrapper(post);
                 this.listBoxPosts.Items.Add(postw);
@@ -86,11 +90,11 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private void buttonPostTime_Click(object sender, EventArgs e)
         {
             string textToPost = this.textBoxPrepareTextToSubmit.Text;
-            if (textToPost != string.Empty)
-            {
-                Poster actionToAdd = FacebookActionFactory.CreateFacebookAction(LoginForm.s_LoggedInUser, dateTimePickerAction.Value, textToPost);
+            //if (textToPost != string.Empty)
+            //{
+                Poster actionToAdd = TaskFactory.CreatePoster(LoginForm.s_LoggedInUserProxy, dateTimePickerAction.Value, textToPost);
                 this.listBoxPending.Items.Add(actionToAdd);
-            }
+            //}
         }
 
         private void buttonLikeAtLeast_Click(object sender, EventArgs e)
@@ -109,7 +113,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             if (this.listBoxPosts.SelectedItem != null)
             {
                 handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
-                Action actionToAdd = FacebookActionFactory.CreateFacebookAction(i_isUnlike, handledPost, i_NumOfRequiredLikes, i_NumOfRequiredComments, i_IsAndOperation);
+                Task actionToAdd = TaskFactory.CreateLikerByNums(i_isUnlike, handledPost, i_NumOfRequiredLikes, i_NumOfRequiredComments, i_IsAndOperation);
                 this.listBoxPending.Items.Add(actionToAdd);
             }
         }
@@ -130,7 +134,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             if (listBoxPosts.SelectedItem != null)
             {
                 handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
-                Action actionToAdd = FacebookActionFactory.CreateFacebookAction(i_IsUnlike, handledPost, this.dateTimePickerAction.Value);
+                Task actionToAdd = TaskFactory.CreateLikerByTime(i_IsUnlike, handledPost, this.dateTimePickerAction.Value);
                 this.listBoxPending.Items.Add(actionToAdd);
             }
         }
@@ -145,8 +149,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             if (isReadyToComment())
             {
                 Post handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
-                Action actionToAdd = FacebookActionFactory.CreateFacebookAction(this.textBoxPrepareTextToSubmit.Text, handledPost, (int)this.numericUpDownCommentAtLikes.Value, (int)this.numericUpDownCommentAtComments.Value, this.radioButtonCommentAnd.Checked);
-                this.listBoxPending.Items.Add(actionToAdd);
+                Task taskToAdd = TaskFactory.CreateCommenterByNums(this.textBoxPrepareTextToSubmit.Text, handledPost, (int)this.numericUpDownCommentAtLikes.Value, (int)this.numericUpDownCommentAtComments.Value, this.radioButtonCommentAnd.Checked);
+                this.listBoxPending.Items.Add(taskToAdd);
             }
         }
 
@@ -155,27 +159,27 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             if (isReadyToComment())
             {
                 Post handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
-                CommenterByTime actionToAdd = new CommenterByTime(this.textBoxPrepareTextToSubmit.Text, handledPost, this.dateTimePickerAction.Value);
-                this.listBoxPending.Items.Add(actionToAdd);
+                CommenterByTime taskToAdd = new CommenterByTime(this.textBoxPrepareTextToSubmit.Text, handledPost, this.dateTimePickerAction.Value);
+                this.listBoxPending.Items.Add(taskToAdd);
             }
         }
 
         private bool scanActions()
         {
-            bool isActionInvoked = false;
-            foreach (object action in this.listBoxPending.Items)
+            bool isTaskInvoked = false;
+            foreach (object task in this.listBoxPending.Items)
             {
-                isActionInvoked = (action as Action).Serve();
-                actionsToRemove.Add(action as Action);
-                this.listBoxDone.Items.Add(action as Action);
+                isTaskInvoked = (task as Task).Serve();
+                tasksToRemove.Add(task as Task);
+                this.listBoxDone.Items.Add(task as Task);
             }
 
-            foreach (Action action in actionsToRemove)
+            foreach (Task task in tasksToRemove)
             {
-                this.listBoxPending.Items.Remove(action);
+                this.listBoxPending.Items.Remove(task);
             }
 
-            return isActionInvoked;
+            return isTaskInvoked;
         }
 
         private void dateTimePickerAction_ValueChanged(object sender, EventArgs e)

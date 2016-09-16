@@ -7,7 +7,6 @@ using System.Text;
 using System.Windows.Forms;
 using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
-using System.Threading;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
@@ -77,9 +76,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
             try
             {
-                PostWrapper postw;
                 List<PostWrapper> postsWrappers = new List<PostWrapper>();
-                foreach (Post post in LoginForm.s_LoggedInUserProxy.User.Posts)
+                foreach (Post post in LoginForm.s_LoggedInUserProxy.Posts)
                 {
                     if (isPostTypeSelected(post.Type.Value))
                     {
@@ -91,14 +89,12 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                             {
                                 if (post.Message != null && post.Message.Contains(i_Expression))
                                 {
-                                    postw = new PostWrapper(post);
-                                    postsWrappers.Add(postw);
+                                    postsWrappers.Add(new PostWrapper(post));
                                 }
                             }
                             else
                             {
-                                postw = new PostWrapper(post);
-                                postsWrappers.Add(postw);
+                                postsWrappers.Add(new PostWrapper(post));
                             }
                         }
                     }
@@ -164,7 +160,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void numericUpDownOccurances_ValueChanged(object sender, EventArgs e)
         {
-            if (LoginForm.s_LoggedInUser != null)
+            if (LoginForm.s_LoggedInUserProxy != null)
             {
                 findBestPosts(textBoxToSearch.Text);
             }
@@ -195,11 +191,12 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             //Thread thread = new Thread(generateResults);
             //thread.Start();
             generateResults();
+         
         }
 
         private void generateResults()
         {
-            if (LoginForm.s_LoggedInUser != null)
+            if (LoginForm.s_LoggedInUserProxy != null)
             {
                 textBoxResultInfo.Text = string.Empty;
                 textBoxResultInfo.Enabled = false;
