@@ -13,6 +13,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
     public partial class BestPostFinder : Form
     {
+        private readonly object m_LockPostsSerach = new object();
         public BestPostFinder()
         {
             InitializeComponent();
@@ -74,6 +75,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void findBestPosts(string i_Expression)
         {
+            lock (m_LockPostsSerach)
+            {
                 List<PostWrapper> postsWrappers = new List<PostWrapper>();
                 foreach (Post post in LoginForm.s_LoggedInUser.Posts)
                 {
@@ -105,11 +108,13 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 listBoxResult.Invoke(new Action(
                     () =>
                 {
+                    listBoxResult.Items.Clear();
                     foreach (PostWrapper pw in subPostWrappers)
                     {
                         listBoxResult.Items.Add(pw);
                     }
-                } ));
+                }));
+            }
 }
 
 
