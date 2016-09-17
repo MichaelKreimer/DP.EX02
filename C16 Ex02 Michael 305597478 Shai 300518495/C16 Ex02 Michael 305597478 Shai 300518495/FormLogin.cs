@@ -74,6 +74,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private void initUserIsLogged(LoginResult result)
         {
             s_LoggedInUserProxy = result.LoggedInUser;
+            Console.WriteLine("Hello Git");
             buttonLogin.Text = "Logged!";
             buttonLogin.Enabled = false;
             buttonPost.Enabled = true;
