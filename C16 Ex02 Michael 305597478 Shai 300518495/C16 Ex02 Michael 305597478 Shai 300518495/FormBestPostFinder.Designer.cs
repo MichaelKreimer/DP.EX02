@@ -58,7 +58,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxToSearch = new System.Windows.Forms.TextBox();
-            this.listBoxSpecial1 = new C16_Ex02_Michael_305597478_Shai_300518495.ListBoxProxy();
             this.groupBoxSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResultPhoto)).BeginInit();
             this.groupBoxResult.SuspendLayout();
@@ -265,7 +264,6 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Controls.Add(this.listBoxSpecial1);
             this.groupBox1.Controls.Add(this.radioButtonAllTime);
             this.groupBox1.Controls.Add(this.radioButtonLastWeek);
             this.groupBox1.Controls.Add(this.radioButtonLastDay);
@@ -417,15 +415,6 @@
             this.textBoxToSearch.Size = new System.Drawing.Size(120, 20);
             this.textBoxToSearch.TabIndex = 38;
             // 
-            // listBoxSpecial1
-            // 
-            this.listBoxSpecial1.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.listBoxSpecial1.FormattingEnabled = true;
-            this.listBoxSpecial1.Location = new System.Drawing.Point(173, 46);
-            this.listBoxSpecial1.Name = "listBoxSpecial1";
-            this.listBoxSpecial1.Size = new System.Drawing.Size(120, 95);
-            this.listBoxSpecial1.TabIndex = 44;
-            // 
             // BestPostFinder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -488,6 +477,5 @@
         private System.Windows.Forms.RadioButton radioButtonLastWeek;
         private System.Windows.Forms.RadioButton radioButtonLastDay;
         private System.Windows.Forms.RadioButton radioButtonLastYear;
-        private ListBoxProxy listBoxSpecial1;
     }
 }

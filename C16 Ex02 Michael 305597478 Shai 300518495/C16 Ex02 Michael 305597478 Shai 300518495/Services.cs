@@ -9,7 +9,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
     public class Services
     {
-        Action m_action;
         public static bool IsEnoughLikesComments(Post post, int numOfRequiredLikes, int numOfRequiredComments, bool isAndOperation)
         {
             if(isAndOperation == true)
