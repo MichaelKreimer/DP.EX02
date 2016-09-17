@@ -97,6 +97,7 @@
     <Compile Include="ListBoxProxy.Designer.cs">
       <DependentUpon>ListBoxProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="PostScoreCalculator.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Liker.cs" />
     <Compile Include="LikerByNums.cs" />
