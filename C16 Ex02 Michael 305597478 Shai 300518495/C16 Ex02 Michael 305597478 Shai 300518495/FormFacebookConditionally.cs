@@ -65,12 +65,12 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                     this.listBoxPosts.Items.Clear();
                 }));
 
-            LoginForm.s_LoggedInUserProxy.User.Clear();
+      //TODO      LoginForm.s_LoggedInUserProxy.Clear();
 
-                LoginForm.s_LoggedInUserProxy.ReFetch();
+                LoginForm.s_LoggedInUser.ReFetch();
             }
         //    LoginForm.s_LoggedInUserProxy.
-            foreach (Post post in LoginForm.s_LoggedInUserProxy.Posts)
+            foreach (Post post in LoginForm.s_LoggedInUser.Posts)
             {
                 PostWrapper postw = new PostWrapper(post);
                 this.listBoxPosts.Items.Add(postw);
@@ -90,11 +90,11 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private void buttonPostTime_Click(object sender, EventArgs e)
         {
             string textToPost = this.textBoxPrepareTextToSubmit.Text;
-            //if (textToPost != string.Empty)
-            //{
-                Poster actionToAdd = TaskFactory.CreatePoster(LoginForm.s_LoggedInUserProxy, dateTimePickerAction.Value, textToPost);
+            if (textToPost != string.Empty)
+            {
+                Poster actionToAdd = TaskFactory.CreatePoster(LoginForm.s_LoggedInUser, dateTimePickerAction.Value, textToPost);
                 this.listBoxPending.Items.Add(actionToAdd);
-            //}
+            }
         }
 
         private void buttonLikeAtLeast_Click(object sender, EventArgs e)

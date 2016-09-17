@@ -24,7 +24,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         {
             return new CommenterByTime(i_CommentText, i_HandledPost, i_ChosenDateTime);
         }
-        public Poster CreatePoster(UserProxy i_UserProxy, DateTime i_ChosenDateTime, string i_TextToPost)
+        public Poster CreatePoster(User i_UserProxy, DateTime i_ChosenDateTime, string i_TextToPost)
         {
             return new Poster(i_UserProxy, i_ChosenDateTime, i_TextToPost);
         }

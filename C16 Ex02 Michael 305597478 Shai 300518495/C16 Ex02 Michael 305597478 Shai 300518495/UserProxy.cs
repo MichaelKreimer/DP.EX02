@@ -7,14 +7,11 @@ using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public class UserProxy : User
+    public class UserProxy : FacebookWrapper.ObjectModel.User
     {
-        //    public User User {  get; set; }
-
-        public UserProxy():base()
-        {
-       //     User = i_User;
-        }
+        //public User() : base()
+        //{
+        //}
         public void PostStatus(string i_TextToPost)
         {
             if (i_TextToPost != string.Empty)
@@ -26,6 +23,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         //{
         //    Posts.Clear();
         //}
-    
+
     }
 }

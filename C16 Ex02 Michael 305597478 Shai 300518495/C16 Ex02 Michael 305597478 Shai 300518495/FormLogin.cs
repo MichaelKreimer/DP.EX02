@@ -16,7 +16,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private BestPostFinder m_BPF = new BestPostFinder();
         private FacebookTaskFactory m_FacebookActionFactory = new FacebookTaskFactory();
         private FormFacebookConditionally m_FC;// = new FormFacebookConditionally(m_FacebookActionFactory);
-        public static UserProxy s_LoggedInUserProxy;
+        public static User s_LoggedInUser {get; set; }
 
         public LoginForm()
         {
@@ -73,13 +73,13 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         }
         private void initUserIsLogged(LoginResult result)
         {
-            s_LoggedInUserProxy = result.LoggedInUser;
+            s_LoggedInUser = result.LoggedInUser;
             buttonLogin.Text = "Logged!";
             buttonLogin.Enabled = false;
             buttonPost.Enabled = true;
             textBoxPost.Enabled = true;
-            pictureBoxUserProfile.LoadAsync(s_LoggedInUserProxy.PictureNormalURL);
-            labelHelloMessage.Text = string.Format("Hello {0} !", s_LoggedInUserProxy.Name);
+            pictureBoxUserProfile.LoadAsync(s_LoggedInUser.PictureNormalURL);
+            labelHelloMessage.Text = string.Format("Hello {0} !", s_LoggedInUser.Name);
         }
 
         private void buttonLogin_Click(object sender, EventArgs e)
@@ -94,7 +94,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void runBestPostFinderDialog()
         {
-            if (LoginForm.s_LoggedInUserProxy != null)
+            if (LoginForm.s_LoggedInUser != null)
             {
                 this.Hide();
                 m_BPF.ShowDialog();
@@ -104,7 +104,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonFacebookContidional_Click(object sender, EventArgs e)
         {
-            if (LoginForm.s_LoggedInUserProxy != null)
+            if (LoginForm.s_LoggedInUser != null)
             {
                 this.Hide();
                 m_FC.ShowDialog();
@@ -114,7 +114,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonPost_Click(object sender, EventArgs e)
         {
-            s_LoggedInUserProxy.PostStatus(textBoxPost.Text);
+            s_LoggedInUser.PostStatus(textBoxPost.Text);
         }
     }
 }
