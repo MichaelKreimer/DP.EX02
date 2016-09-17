@@ -84,6 +84,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 PostWrapper postw = new PostWrapper(post);
                 addObjectToListBoxAsynchronous(listBoxPosts, postw);
             }
+            
+            //string answer = listBoxPosts.Sorted ? "YES!" : "NO!";
+            //Console.WriteLine(string.Format("is the list sorted? {0}",answer));
             lock (m_lockShown)
             {
                 if (m_IsInShown == false)

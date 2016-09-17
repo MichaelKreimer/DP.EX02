@@ -13,7 +13,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
     public partial class BestPostFinder : Form
     {
-        private readonly object m_LockPostsSerach = new object();
+        private readonly object m_LockPostsSearch = new object();
         public BestPostFinder()
         {
             InitializeComponent();
@@ -75,7 +75,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void findBestPosts(string i_Expression)
         {
-            lock (m_LockPostsSerach)
+            lock (m_LockPostsSearch)
             {
                 List<PostWrapper> postsWrappers = new List<PostWrapper>();
                 foreach (Post post in LoginForm.s_LoggedInUser.Posts)
@@ -195,11 +195,14 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void generateResults()
         {
-            if (LoginForm.s_LoggedInUser != null)
+            lock (m_LockPostsSearch)
             {
-                textBoxResultInfo.Text = string.Empty;
-                textBoxResultInfo.Enabled = false;
-                findBestPosts(textBoxToSearch.Text);
+                if (LoginForm.s_LoggedInUser != null)
+                {
+                    textBoxResultInfo.Text = string.Empty;
+                    textBoxResultInfo.Enabled = false;
+                    findBestPosts(textBoxToSearch.Text);
+                }
             }
         }
 

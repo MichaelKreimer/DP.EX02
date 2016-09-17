@@ -91,7 +91,12 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="IUserAction.cs" />
+    <Compile Include="ListBoxSpecial.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ListBoxSpecial.Designer.cs">
+      <DependentUpon>ListBoxSpecial.cs</DependentUpon>
+    </Compile>
     <Compile Include="Task.cs" />
     <Compile Include="Liker.cs" />
     <Compile Include="LikerByNums.cs" />
