@@ -12,6 +12,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
     public partial class ListBoxProxy : ListBox
     {
         private Timer m_Timer;
+        private readonly object m_lockTimer = new object();
+        private DateTime m_EndTime;
+        //private Color m_CurrentColor {get { return this.BackColor; } set { this.BackColor = value; }
         public ListBoxProxy()
         {
             InitializeComponent();
@@ -19,26 +22,45 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         public override void ResetBackColor()
         {
-            for (int i = 0; i < 20; i++)
-            {
-                this.BackColor = Color.Aqua;
-                createTimeInterval(300);
+                createTimeInterval(100);
                 this.BackColor = Color.DarkCyan;
-            } 
-            this.BackColor = Color.Green;
         }
-        public void createTimeInterval(int i_MiliSecsToWait)
+        private void createTimeInterval(int i_MiliSecsToWait)
         {
-            Timer timer = new Timer();
-            timer.Interval = i_MiliSecsToWait;
-            timer.Start();
+            lock (m_lockTimer)
+            {
+                m_Timer = new Timer();
+                m_EndTime = DateTime.Now.AddSeconds(3);
+                m_Timer.Interval = i_MiliSecsToWait;
+                m_Timer.Tick += OnTimedEvent;
+                m_Timer.Start();
+            }
+        }
+        private void switchColor()
+        {
+            if (this.BackColor == Color.DarkCyan)
+            {
+                this.BackColor = Color.LightBlue;
+            }
+            else
+            {
+                this.BackColor = Color.DarkCyan;
+            }
+        }
+        private void OnTimedEvent(Object source, EventArgs e)
+        {
+            lock (m_lockTimer)
+            {
+                switchColor();
+                if (DateTime.Now >= m_EndTime)
+                {
+                    m_Timer.Stop();
+                    base.ResetBackColor();
+                    //this.BackColor = Color.White;
+                }
+            }
 
 
-        }
-        private void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
-        {
-            //  Console.WriteLine("The Elapsed event was raised at {0}", e.SignalTime);
-            m_Timer.Stop();
         }
     }
 }

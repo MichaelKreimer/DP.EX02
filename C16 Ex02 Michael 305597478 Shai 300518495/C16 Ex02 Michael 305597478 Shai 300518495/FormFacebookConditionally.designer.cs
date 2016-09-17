@@ -36,8 +36,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacebookConditionally));
             this.dateTimePickerAction = new System.Windows.Forms.DateTimePicker();
-            this.listBoxPosts = new ListBoxProxy();
-            this.listBoxPending = new System.Windows.Forms.ListBox();
+            this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.listBoxPending = new ListBoxProxy();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonPostTime = new System.Windows.Forms.Button();
@@ -597,8 +597,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateTimePickerAction;
-        private ListBoxProxy listBoxPosts;
-        private System.Windows.Forms.ListBox listBoxPending;
+        private System.Windows.Forms.ListBox listBoxPosts;
+        private ListBoxProxy listBoxPending;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button buttonPostTime;
