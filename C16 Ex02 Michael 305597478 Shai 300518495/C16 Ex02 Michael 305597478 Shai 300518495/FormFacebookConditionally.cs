@@ -31,10 +31,16 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.listBoxes.Add(listBoxPosts);
             this.listBoxes.Add(listBoxPending);
             this.listBoxes.Add(listBoxDone);
-            listBoxPosts.BackColor = listBoxPending.BackColor = listBoxDone.BackColor = Color.HotPink;
         }
 
-        private void resetListBoxesBackColoer()
+        private void setListBoxesBackColor(Color color)
+        {
+            foreach (ListBox listbox in listBoxes)
+            {
+                listbox.BackColor = color;
+            }
+        }
+        private void resetListBoxesBackColor()
         {
             foreach(ListBox listbox in listBoxes)
             {
@@ -110,12 +116,16 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonDeleteAction_Click(object sender, EventArgs e)
         {
-            resetListBoxesBackColoer();
             object item = this.listBoxPending.SelectedItem;
             listBoxPending.Invoke(new Action(() =>
             {
                 this.listBoxPending.Items.Remove(item);
             }));
+
+            if(isListBoxPendingEmpty())
+            {
+                resetListBoxesBackColor();
+            }
         }
 
         private void buttonPostTime_Click(object sender, EventArgs e)
@@ -126,6 +136,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 if (textToPost != string.Empty)
                 {
                     Poster taskToAdd = TaskFactory.CreatePoster(LoginForm.s_LoggedInUser, dateTimePickerAction.Value, textToPost);
+                    setListBoxesBackColor(Color.HotPink);
                     addObjectToListBoxAsynchronous(listBoxPending, taskToAdd);
                 }
             }
@@ -133,11 +144,13 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonLikeAtLeast_Click(object sender, EventArgs e)
         {
+            setListBoxesBackColor(Color.HotPink);
             likerByNumFilters(false, (int)this.numericUpDownLikeAtLikes.Value, (int)this.numericUpDownLikeAtComments.Value, this.radioButtonLikeAnd.Checked);
         }
 
         private void buttonUnlike_Click(object sender, EventArgs e)
         {
+            setListBoxesBackColor(Color.HotPink);
             likerByNumFilters(true, (int)this.numericUpDownLikeAtLikes.Value, (int)this.numericUpDownLikeAtComments.Value, this.radioButtonLikeAnd.Checked);
         }
 
@@ -175,11 +188,13 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         }
         private void buttonLikeTime_Click(object sender, EventArgs e)
         {
+            setListBoxesBackColor(Color.HotPink);
             LikerByTimeFilters(false, this.dateTimePickerAction.Value);
         }
 
         private void buttonUnlikeTime_Click(object sender, EventArgs e)
         {
+            setListBoxesBackColor(Color.HotPink);
             LikerByTimeFilters(true, this.dateTimePickerAction.Value);
         }
 
@@ -210,6 +225,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 {
                     Post handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
                     Task taskToAdd = TaskFactory.CreateCommenterByNums(this.textBoxPrepareTextToSubmit.Text, handledPost, (int)this.numericUpDownCommentAtLikes.Value, (int)this.numericUpDownCommentAtComments.Value, this.radioButtonCommentAnd.Checked);
+                    setListBoxesBackColor(Color.HotPink);
                     addObjectToListBoxAsynchronous(listBoxPending, taskToAdd);
                 }
             }
@@ -223,6 +239,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 {
                     Post handledPost = (this.listBoxPosts.SelectedItem as PostWrapper).Post;
                     CommenterByTime taskToAdd = new CommenterByTime(this.textBoxPrepareTextToSubmit.Text, handledPost, this.dateTimePickerAction.Value);
+                    setListBoxesBackColor(Color.HotPink);
                     addObjectToListBoxAsynchronous(listBoxPending, taskToAdd);
 
                 }
@@ -250,6 +267,10 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             {
                 // this.listBoxPending.Items.Remove(task);
                 removeItemFromListBoxAsynchronous(listBoxPending, task);
+                if (isListBoxPendingEmpty())
+                {
+                    resetListBoxesBackColor();
+                }
             }
 
             return isTaskInvoked;
@@ -261,6 +282,12 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 {
                     this.dateTimePickerAction.Value = DateTime.Now;
                 }
+        }
+
+        private bool isListBoxPendingEmpty()
+        {
+            bool isEmpty = listBoxPending.Items.Count == 0 ? true : false;
+            return isEmpty;
         }
     }
 }
