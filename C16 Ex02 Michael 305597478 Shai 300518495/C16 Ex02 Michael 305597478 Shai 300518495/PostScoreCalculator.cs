@@ -5,18 +5,37 @@ using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    class PostScoreCalculator
+    abstract class PostScoreCalculator
     {
-        BestPostFinder.eScoreCalculationStyle ScoreCalculationStyle {get;set ;}
-        public int LikesCount { get; set; }
-        public int CommentsCount { get; set; }
-
-        public PostScoreCalculator(BestPostFinder.eScoreCalculationStyle i_ScoreCalculationStyle,int i_LikesCount,int i_CommentsCount)
+        //public static PostScoreCalculator CreatePostScoreCalculator(BestPostFinder.eScoreCalculationStyle i_ScoreCalculationStyle)
+        //{
+        //    if (i_ScoreCalculationStyle.Equals(BestPostFinder.eScoreCalculationStyle.Comments))
+        //    {
+        //        return new PostScoreCalculatorByComments.Create();
+        //    }
+        //    else if (i_ScoreCalculationStyle.Equals(BestPostFinder.eScoreCalculationStyle.Formula))
+        //    {
+        //        return new PostScoreCalculatorByFormula();
+        //    }
+        //    else // (i_ScoreCalculationStyle.Equals(BestPostFinder.eScoreCalculationStyle.Likes)
+        //    {
+        //        return new PostScoreCalculatorByLikes();
+        //    }
+        //}
+        public int GenerateScore(ref int i_Likes,ref int i_Comments,int i_LikeValue,int i_CommentValue)
         {
-            ScoreCalculationStyle = i_ScoreCalculationStyle;
-            LikesCount = i_LikesCount;
-            CommentsCount = i_CommentsCount;
+            i_Likes = i_Likes * i_LikeValue;
+            i_Comments = i_Comments * i_CommentValue;
+            return GetScore(i_Likes,i_Comments);
+            
         }
+        protected abstract int GetScore(int i_Likes,int i_Comments);
+        //public abstract int GetScore();
 
+        //public int GetScore(int i_Comments, int i_Likes)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
+    
 }

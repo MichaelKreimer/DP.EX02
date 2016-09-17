@@ -14,6 +14,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
     public partial class BestPostFinder : Form
     {
         private readonly object m_LockPostsSearch = new object();
+        private readonly object m_LockPostsGenerate = new object();
+        private PostScoreCalculator m_ScoreCalculator;
         public BestPostFinder()
         {
             InitializeComponent();
@@ -40,23 +42,23 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             Formula,
         }
 
-        public int getPostScore(Post i_PostToCheck, eScoreCalculationStyle i_ScoreCalculationStyle)
-        {
-            if (i_ScoreCalculationStyle.Equals(eScoreCalculationStyle.Likes))
-            {
-                return i_PostToCheck.LikedBy.Count;
-            }
-            else if (i_ScoreCalculationStyle.Equals(eScoreCalculationStyle.Comments))
-            {
-                return i_PostToCheck.Comments.Count;
-            }
-            else
-            {
-                int likesValue = (int)numericUpDownLikesValue.Value;
-                int commentsValue = (int)numericUpDownCommentsValue.Value;
-                return (i_PostToCheck.Comments.Count * commentsValue) + (i_PostToCheck.LikedBy.Count * likesValue);
-            }
-        }
+        //public int getPostScore(Post i_PostToCheck, eScoreCalculationStyle i_ScoreCalculationStyle)
+        //{
+        //    if (i_ScoreCalculationStyle.Equals(eScoreCalculationStyle.Likes))
+        //    {
+        //        return i_PostToCheck.LikedBy.Count;
+        //    }
+        //    else if (i_ScoreCalculationStyle.Equals(eScoreCalculationStyle.Comments))
+        //    {
+        //        return i_PostToCheck.Comments.Count;
+        //    }
+        //    else
+        //    {
+        //        int likesValue = (int)numericUpDownLikesValue.Value;
+        //        int commentsValue = (int)numericUpDownCommentsValue.Value;
+        //        return (i_PostToCheck.Comments.Count * commentsValue) + (i_PostToCheck.LikedBy.Count * likesValue);
+        //    }
+        //}
 
         private bool isPostTypeSelected(Post.eType i_typeToCheck)
         {
@@ -115,12 +117,16 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                     }
                 }));
             }
-}
+        }
 
 
         private int comparePostWrappers(Post post1, Post post2)
         {
-            return getPostScore(post1, getScoreCalcStyle()) - getPostScore(post2, getScoreCalcStyle());
+            PostScoreCalculator pc1, pc2;
+            pc1 = PostScoreCalculator.CreatePostScoreCalculator(getScoreCalcStyle(), post1.LikedBy.Count, post1.Comments.Count);
+            pc2 = PostScoreCalculator.CreatePostScoreCalculator(getScoreCalcStyle(), post2.LikedBy.Count, post2.Comments.Count);
+            return pc1.GenerateScore() - pc2.GenerateScore();
+            //return getPostScore(post1, getScoreCalcStyle()) - getPostScore(post2, getScoreCalcStyle());
         }
 
         private eDate getDateRange()
@@ -190,20 +196,20 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private void buttonGenerateResults_Click(object sender, EventArgs e)
         {
             new Thread(generateResults).Start();
-         
+
         }
 
         private void generateResults()
         {
-            lock (m_LockPostsSearch)
-            {
                 if (LoginForm.s_LoggedInUser != null)
                 {
-                    textBoxResultInfo.Text = string.Empty;
-                    textBoxResultInfo.Enabled = false;
-                    findBestPosts(textBoxToSearch.Text);
+                    textBoxResultInfo.Invoke(new Action( () =>
+                   {
+        textBoxResultInfo.Text = string.Empty;
+        textBoxResultInfo.Enabled = false;
+        findBestPosts(textBoxToSearch.Text);
+                     }));
                 }
-            }
         }
 
         private void listBoxResult_SelectedValueChanged(object sender, EventArgs e)
@@ -234,7 +240,10 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private void displayPostInfo(PostWrapper i_Pw)
         {
             Post postToDisplay = i_Pw.Post;
-            textBoxResultInfo.Enabled = true;
+            textBoxResultInfo.Invoke(new Action(() =>
+            {
+                textBoxResultInfo.Enabled = true;
+            }));
             string message = postToDisplay.Message == null ? string.Empty : postToDisplay.Message;
             string resultInfo = string.Format(
 @"{0}

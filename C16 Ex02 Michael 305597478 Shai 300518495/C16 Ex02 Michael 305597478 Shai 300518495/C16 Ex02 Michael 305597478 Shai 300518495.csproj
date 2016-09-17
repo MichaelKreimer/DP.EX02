@@ -97,7 +97,11 @@
     <Compile Include="ListBoxProxy.Designer.cs">
       <DependentUpon>ListBoxProxy.cs</DependentUpon>
     </Compile>
+    <Compile Include="MethodFactory.cs" />
     <Compile Include="PostScoreCalculator.cs" />
+    <Compile Include="PostScoreCalculatorByComments.cs" />
+    <Compile Include="PostScoreCalculatorByFormula.cs" />
+    <Compile Include="PostScoreCalculatorByLikes.cs" />
     <Compile Include="Task.cs" />
     <Compile Include="Liker.cs" />
     <Compile Include="LikerByNums.cs" />
@@ -109,7 +113,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Schedulable.cs" />
     <Compile Include="Services.cs" />
-    <Compile Include="UserProxy.cs" />
     <EmbeddedResource Include="FormBestPostFinder.resx">
       <DependentUpon>FormBestPostFinder.cs</DependentUpon>
     </EmbeddedResource>
