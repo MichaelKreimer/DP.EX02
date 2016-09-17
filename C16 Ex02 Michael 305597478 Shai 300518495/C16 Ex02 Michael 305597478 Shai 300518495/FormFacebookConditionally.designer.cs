@@ -37,7 +37,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacebookConditionally));
             this.dateTimePickerAction = new System.Windows.Forms.DateTimePicker();
             this.listBoxPosts = new System.Windows.Forms.ListBox();
-            this.listBoxPending = new ListBoxProxy();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.buttonPostTime = new System.Windows.Forms.Button();
@@ -78,6 +77,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.buttonUnlikeTime = new System.Windows.Forms.Button();
             this.groupBoxNumOf = new System.Windows.Forms.GroupBox();
             this.groupBoxTime = new System.Windows.Forms.GroupBox();
+            this.buttonUpdateText = new System.Windows.Forms.Button();
+            this.listBoxPending = new C16_Ex02_Michael_305597478_Shai_300518495.ListBoxProxy();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLikeAtLikes)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownLikeAtComments)).BeginInit();
             this.panel1.SuspendLayout();
@@ -93,57 +94,44 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             this.dateTimePickerAction.CustomFormat = "MMM d yyyy \'at\' HH\':\'mm";
             this.dateTimePickerAction.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dateTimePickerAction.Location = new System.Drawing.Point(4, 30);
-            this.dateTimePickerAction.Margin = new System.Windows.Forms.Padding(2);
+            this.dateTimePickerAction.Location = new System.Drawing.Point(6, 46);
             this.dateTimePickerAction.Name = "dateTimePickerAction";
-            this.dateTimePickerAction.Size = new System.Drawing.Size(157, 20);
+            this.dateTimePickerAction.Size = new System.Drawing.Size(234, 26);
             this.dateTimePickerAction.TabIndex = 0;
             this.dateTimePickerAction.ValueChanged += new System.EventHandler(this.dateTimePickerAction_ValueChanged);
             // 
             // listBoxPosts
             // 
             this.listBoxPosts.FormattingEnabled = true;
-            this.listBoxPosts.Location = new System.Drawing.Point(15, 26);
-            this.listBoxPosts.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxPosts.ItemHeight = 20;
+            this.listBoxPosts.Location = new System.Drawing.Point(22, 40);
             this.listBoxPosts.Name = "listBoxPosts";
-            this.listBoxPosts.Size = new System.Drawing.Size(335, 186);
+            this.listBoxPosts.Size = new System.Drawing.Size(500, 284);
             this.listBoxPosts.TabIndex = 1;
-            // 
-            // listBoxPending
-            // 
-            this.listBoxPending.FormattingEnabled = true;
-            this.listBoxPending.Location = new System.Drawing.Point(371, 26);
-            this.listBoxPending.Margin = new System.Windows.Forms.Padding(2);
-            this.listBoxPending.Name = "listBoxPending";
-            this.listBoxPending.Size = new System.Drawing.Size(335, 186);
-            this.listBoxPending.TabIndex = 2;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 11);
-            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label1.Location = new System.Drawing.Point(18, 17);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(36, 13);
+            this.label1.Size = new System.Drawing.Size(53, 20);
             this.label1.TabIndex = 3;
             this.label1.Text = "Posts:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(369, 11);
-            this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label2.Location = new System.Drawing.Point(554, 17);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(87, 13);
+            this.label2.Size = new System.Drawing.Size(128, 20);
             this.label2.TabIndex = 4;
             this.label2.Text = "Pending Actions:";
             // 
             // buttonPostTime
             // 
-            this.buttonPostTime.Location = new System.Drawing.Point(532, 16);
-            this.buttonPostTime.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonPostTime.Location = new System.Drawing.Point(798, 25);
             this.buttonPostTime.Name = "buttonPostTime";
-            this.buttonPostTime.Size = new System.Drawing.Size(152, 45);
+            this.buttonPostTime.Size = new System.Drawing.Size(228, 69);
             this.buttonPostTime.TabIndex = 5;
             this.buttonPostTime.Text = "New Post By Time";
             this.buttonPostTime.UseVisualStyleBackColor = true;
@@ -151,29 +139,26 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // textBoxPrepareTextToSubmit
             // 
-            this.textBoxPrepareTextToSubmit.Location = new System.Drawing.Point(15, 476);
-            this.textBoxPrepareTextToSubmit.Margin = new System.Windows.Forms.Padding(2);
+            this.textBoxPrepareTextToSubmit.Location = new System.Drawing.Point(22, 732);
             this.textBoxPrepareTextToSubmit.Multiline = true;
             this.textBoxPrepareTextToSubmit.Name = "textBoxPrepareTextToSubmit";
-            this.textBoxPrepareTextToSubmit.Size = new System.Drawing.Size(335, 134);
+            this.textBoxPrepareTextToSubmit.Size = new System.Drawing.Size(500, 204);
             this.textBoxPrepareTextToSubmit.TabIndex = 6;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 461);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Location = new System.Drawing.Point(18, 706);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(119, 13);
+            this.label3.Size = new System.Drawing.Size(177, 20);
             this.label3.TabIndex = 7;
             this.label3.Text = "Type Post Or Comment:";
             // 
             // buttonCommentTime
             // 
-            this.buttonCommentTime.Location = new System.Drawing.Point(348, 16);
-            this.buttonCommentTime.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCommentTime.Location = new System.Drawing.Point(522, 25);
             this.buttonCommentTime.Name = "buttonCommentTime";
-            this.buttonCommentTime.Size = new System.Drawing.Size(180, 45);
+            this.buttonCommentTime.Size = new System.Drawing.Size(270, 69);
             this.buttonCommentTime.TabIndex = 8;
             this.buttonCommentTime.Text = "Comment On Chosen Post By Time";
             this.buttonCommentTime.UseVisualStyleBackColor = true;
@@ -181,10 +166,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // buttonLikeTime
             // 
-            this.buttonLikeTime.Location = new System.Drawing.Point(164, 16);
-            this.buttonLikeTime.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLikeTime.Location = new System.Drawing.Point(246, 25);
             this.buttonLikeTime.Name = "buttonLikeTime";
-            this.buttonLikeTime.Size = new System.Drawing.Size(180, 21);
+            this.buttonLikeTime.Size = new System.Drawing.Size(270, 32);
             this.buttonLikeTime.TabIndex = 9;
             this.buttonLikeTime.Text = "Like Chosen Post By Time";
             this.buttonLikeTime.UseVisualStyleBackColor = true;
@@ -192,10 +176,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // buttonLikeAtLeast
             // 
-            this.buttonLikeAtLeast.Location = new System.Drawing.Point(14, 18);
-            this.buttonLikeAtLeast.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonLikeAtLeast.Location = new System.Drawing.Point(21, 28);
             this.buttonLikeAtLeast.Name = "buttonLikeAtLeast";
-            this.buttonLikeAtLeast.Size = new System.Drawing.Size(47, 26);
+            this.buttonLikeAtLeast.Size = new System.Drawing.Size(70, 40);
             this.buttonLikeAtLeast.TabIndex = 10;
             this.buttonLikeAtLeast.Text = "Like";
             this.buttonLikeAtLeast.UseVisualStyleBackColor = true;
@@ -203,10 +186,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // buttonCommentAtLeast
             // 
-            this.buttonCommentAtLeast.Location = new System.Drawing.Point(14, 52);
-            this.buttonCommentAtLeast.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonCommentAtLeast.Location = new System.Drawing.Point(21, 80);
             this.buttonCommentAtLeast.Name = "buttonCommentAtLeast";
-            this.buttonCommentAtLeast.Size = new System.Drawing.Size(100, 26);
+            this.buttonCommentAtLeast.Size = new System.Drawing.Size(150, 40);
             this.buttonCommentAtLeast.TabIndex = 11;
             this.buttonCommentAtLeast.Text = "Comment";
             this.buttonCommentAtLeast.UseVisualStyleBackColor = true;
@@ -215,37 +197,33 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(118, 25);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label4.Location = new System.Drawing.Point(177, 38);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 13);
+            this.label4.Size = new System.Drawing.Size(179, 20);
             this.label4.TabIndex = 14;
             this.label4.Text = "when there are At Least";
             // 
             // numericUpDownLikeAtLikes
             // 
-            this.numericUpDownLikeAtLikes.Location = new System.Drawing.Point(241, 23);
-            this.numericUpDownLikeAtLikes.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownLikeAtLikes.Location = new System.Drawing.Point(362, 35);
             this.numericUpDownLikeAtLikes.Name = "numericUpDownLikeAtLikes";
-            this.numericUpDownLikeAtLikes.Size = new System.Drawing.Size(46, 20);
+            this.numericUpDownLikeAtLikes.Size = new System.Drawing.Size(69, 26);
             this.numericUpDownLikeAtLikes.TabIndex = 15;
             // 
             // numericUpDownLikeAtComments
             // 
-            this.numericUpDownLikeAtComments.Location = new System.Drawing.Point(479, 23);
-            this.numericUpDownLikeAtComments.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownLikeAtComments.Location = new System.Drawing.Point(718, 35);
             this.numericUpDownLikeAtComments.Name = "numericUpDownLikeAtComments";
-            this.numericUpDownLikeAtComments.Size = new System.Drawing.Size(46, 20);
+            this.numericUpDownLikeAtComments.Size = new System.Drawing.Size(69, 26);
             this.numericUpDownLikeAtComments.TabIndex = 16;
             // 
             // radioButtonLikeAnd
             // 
             this.radioButtonLikeAnd.AutoSize = true;
             this.radioButtonLikeAnd.Checked = true;
-            this.radioButtonLikeAnd.Location = new System.Drawing.Point(4, 5);
-            this.radioButtonLikeAnd.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonLikeAnd.Location = new System.Drawing.Point(6, 8);
             this.radioButtonLikeAnd.Name = "radioButtonLikeAnd";
-            this.radioButtonLikeAnd.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonLikeAnd.Size = new System.Drawing.Size(68, 24);
             this.radioButtonLikeAnd.TabIndex = 17;
             this.radioButtonLikeAnd.TabStop = true;
             this.radioButtonLikeAnd.Text = "AND";
@@ -254,10 +232,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // radioButtonLikeOr
             // 
             this.radioButtonLikeOr.AutoSize = true;
-            this.radioButtonLikeOr.Location = new System.Drawing.Point(60, 5);
-            this.radioButtonLikeOr.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonLikeOr.Location = new System.Drawing.Point(90, 8);
             this.radioButtonLikeOr.Name = "radioButtonLikeOr";
-            this.radioButtonLikeOr.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonLikeOr.Size = new System.Drawing.Size(58, 24);
             this.radioButtonLikeOr.TabIndex = 18;
             this.radioButtonLikeOr.Text = "OR";
             this.radioButtonLikeOr.UseVisualStyleBackColor = true;
@@ -267,60 +244,54 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.radioButtonLikeOr);
             this.panel1.Controls.Add(this.radioButtonLikeAnd);
-            this.panel1.Location = new System.Drawing.Point(324, 18);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2);
+            this.panel1.Location = new System.Drawing.Point(486, 28);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(103, 26);
+            this.panel1.Size = new System.Drawing.Size(154, 40);
             this.panel1.TabIndex = 20;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(47, 4);
-            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label8.Location = new System.Drawing.Point(70, 6);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(13, 20);
+            this.label8.Size = new System.Drawing.Size(20, 29);
             this.label8.TabIndex = 23;
             this.label8.Text = "/";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(291, 25);
-            this.label6.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label6.Location = new System.Drawing.Point(436, 38);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(32, 13);
+            this.label6.Size = new System.Drawing.Size(46, 20);
             this.label6.TabIndex = 21;
             this.label6.Text = "Likes";
             // 
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(529, 25);
-            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label7.Location = new System.Drawing.Point(794, 38);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(153, 13);
+            this.label7.Size = new System.Drawing.Size(230, 20);
             this.label7.TabIndex = 22;
             this.label7.Text = "Comments on the chosen post.";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(529, 58);
-            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label5.Location = new System.Drawing.Point(794, 89);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(153, 13);
+            this.label5.Size = new System.Drawing.Size(230, 20);
             this.label5.TabIndex = 28;
             this.label5.Text = "Comments on the chosen post.";
             // 
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(291, 58);
-            this.label9.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label9.Location = new System.Drawing.Point(436, 89);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
+            this.label9.Size = new System.Drawing.Size(46, 20);
             this.label9.TabIndex = 27;
             this.label9.Text = "Likes";
             // 
@@ -329,30 +300,27 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.panel2.Controls.Add(this.label10);
             this.panel2.Controls.Add(this.radioButtonCommentOr);
             this.panel2.Controls.Add(this.radioButtonCommentAnd);
-            this.panel2.Location = new System.Drawing.Point(324, 52);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2);
+            this.panel2.Location = new System.Drawing.Point(486, 80);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(103, 26);
+            this.panel2.Size = new System.Drawing.Size(154, 40);
             this.panel2.TabIndex = 26;
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label10.Location = new System.Drawing.Point(47, 3);
-            this.label10.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label10.Location = new System.Drawing.Point(70, 5);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(13, 20);
+            this.label10.Size = new System.Drawing.Size(20, 29);
             this.label10.TabIndex = 23;
             this.label10.Text = "/";
             // 
             // radioButtonCommentOr
             // 
             this.radioButtonCommentOr.AutoSize = true;
-            this.radioButtonCommentOr.Location = new System.Drawing.Point(60, 5);
-            this.radioButtonCommentOr.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonCommentOr.Location = new System.Drawing.Point(90, 8);
             this.radioButtonCommentOr.Name = "radioButtonCommentOr";
-            this.radioButtonCommentOr.Size = new System.Drawing.Size(41, 17);
+            this.radioButtonCommentOr.Size = new System.Drawing.Size(58, 24);
             this.radioButtonCommentOr.TabIndex = 18;
             this.radioButtonCommentOr.Text = "OR";
             this.radioButtonCommentOr.UseVisualStyleBackColor = true;
@@ -361,10 +329,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             this.radioButtonCommentAnd.AutoSize = true;
             this.radioButtonCommentAnd.Checked = true;
-            this.radioButtonCommentAnd.Location = new System.Drawing.Point(4, 5);
-            this.radioButtonCommentAnd.Margin = new System.Windows.Forms.Padding(2);
+            this.radioButtonCommentAnd.Location = new System.Drawing.Point(6, 8);
             this.radioButtonCommentAnd.Name = "radioButtonCommentAnd";
-            this.radioButtonCommentAnd.Size = new System.Drawing.Size(48, 17);
+            this.radioButtonCommentAnd.Size = new System.Drawing.Size(68, 24);
             this.radioButtonCommentAnd.TabIndex = 17;
             this.radioButtonCommentAnd.TabStop = true;
             this.radioButtonCommentAnd.Text = "AND";
@@ -372,36 +339,32 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // numericUpDownCommentAtComments
             // 
-            this.numericUpDownCommentAtComments.Location = new System.Drawing.Point(479, 57);
-            this.numericUpDownCommentAtComments.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownCommentAtComments.Location = new System.Drawing.Point(718, 88);
             this.numericUpDownCommentAtComments.Name = "numericUpDownCommentAtComments";
-            this.numericUpDownCommentAtComments.Size = new System.Drawing.Size(46, 20);
+            this.numericUpDownCommentAtComments.Size = new System.Drawing.Size(69, 26);
             this.numericUpDownCommentAtComments.TabIndex = 25;
             // 
             // numericUpDownCommentAtLikes
             // 
-            this.numericUpDownCommentAtLikes.Location = new System.Drawing.Point(241, 57);
-            this.numericUpDownCommentAtLikes.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownCommentAtLikes.Location = new System.Drawing.Point(362, 88);
             this.numericUpDownCommentAtLikes.Name = "numericUpDownCommentAtLikes";
-            this.numericUpDownCommentAtLikes.Size = new System.Drawing.Size(46, 20);
+            this.numericUpDownCommentAtLikes.Size = new System.Drawing.Size(69, 26);
             this.numericUpDownCommentAtLikes.TabIndex = 24;
             // 
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(118, 58);
-            this.label11.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label11.Location = new System.Drawing.Point(177, 89);
             this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(120, 13);
+            this.label11.Size = new System.Drawing.Size(179, 20);
             this.label11.TabIndex = 23;
             this.label11.Text = "when there are At Least";
             // 
             // buttonDeleteAction
             // 
-            this.buttonDeleteAction.Location = new System.Drawing.Point(371, 214);
-            this.buttonDeleteAction.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonDeleteAction.Location = new System.Drawing.Point(722, 330);
             this.buttonDeleteAction.Name = "buttonDeleteAction";
-            this.buttonDeleteAction.Size = new System.Drawing.Size(107, 26);
+            this.buttonDeleteAction.Size = new System.Drawing.Size(160, 40);
             this.buttonDeleteAction.TabIndex = 29;
             this.buttonDeleteAction.Text = "Delete Action";
             this.buttonDeleteAction.UseVisualStyleBackColor = true;
@@ -409,10 +372,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // buttonNumOfFetchedPosts
             // 
-            this.buttonNumOfFetchedPosts.Location = new System.Drawing.Point(15, 214);
-            this.buttonNumOfFetchedPosts.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonNumOfFetchedPosts.Location = new System.Drawing.Point(22, 329);
             this.buttonNumOfFetchedPosts.Name = "buttonNumOfFetchedPosts";
-            this.buttonNumOfFetchedPosts.Size = new System.Drawing.Size(56, 26);
+            this.buttonNumOfFetchedPosts.Size = new System.Drawing.Size(84, 40);
             this.buttonNumOfFetchedPosts.TabIndex = 30;
             this.buttonNumOfFetchedPosts.Text = "Fetch";
             this.buttonNumOfFetchedPosts.UseVisualStyleBackColor = true;
@@ -420,10 +382,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // numericUpDownPostsToFetch
             // 
-            this.numericUpDownPostsToFetch.Location = new System.Drawing.Point(75, 217);
-            this.numericUpDownPostsToFetch.Margin = new System.Windows.Forms.Padding(2);
+            this.numericUpDownPostsToFetch.Location = new System.Drawing.Point(112, 334);
             this.numericUpDownPostsToFetch.Name = "numericUpDownPostsToFetch";
-            this.numericUpDownPostsToFetch.Size = new System.Drawing.Size(46, 20);
+            this.numericUpDownPostsToFetch.Size = new System.Drawing.Size(69, 26);
             this.numericUpDownPostsToFetch.TabIndex = 31;
             this.numericUpDownPostsToFetch.Value = new decimal(new int[] {
             25,
@@ -434,30 +395,28 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(125, 221);
-            this.label12.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label12.Location = new System.Drawing.Point(188, 340);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(55, 13);
+            this.label12.Size = new System.Drawing.Size(82, 20);
             this.label12.TabIndex = 32;
             this.label12.Text = "last Posts.";
             // 
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(369, 461);
-            this.label13.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label13.Location = new System.Drawing.Point(554, 706);
             this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(74, 13);
+            this.label13.Size = new System.Drawing.Size(109, 20);
             this.label13.TabIndex = 34;
             this.label13.Text = "Done Actions:";
             // 
             // listBoxDone
             // 
             this.listBoxDone.FormattingEnabled = true;
-            this.listBoxDone.Location = new System.Drawing.Point(371, 476);
-            this.listBoxDone.Margin = new System.Windows.Forms.Padding(2);
+            this.listBoxDone.ItemHeight = 20;
+            this.listBoxDone.Location = new System.Drawing.Point(556, 732);
             this.listBoxDone.Name = "listBoxDone";
-            this.listBoxDone.Size = new System.Drawing.Size(335, 134);
+            this.listBoxDone.Size = new System.Drawing.Size(500, 204);
             this.listBoxDone.TabIndex = 33;
             // 
             // timerPerformCheck
@@ -468,29 +427,26 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(431, 25);
-            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Location = new System.Drawing.Point(646, 38);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(46, 13);
+            this.label14.Size = new System.Drawing.Size(69, 20);
             this.label14.TabIndex = 35;
             this.label14.Text = "At Least";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(431, 58);
-            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Location = new System.Drawing.Point(646, 89);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(46, 13);
+            this.label15.Size = new System.Drawing.Size(69, 20);
             this.label15.TabIndex = 36;
             this.label15.Text = "At Least";
             // 
             // buttonUnlike
             // 
-            this.buttonUnlike.Location = new System.Drawing.Point(67, 18);
-            this.buttonUnlike.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUnlike.Location = new System.Drawing.Point(100, 28);
             this.buttonUnlike.Name = "buttonUnlike";
-            this.buttonUnlike.Size = new System.Drawing.Size(47, 26);
+            this.buttonUnlike.Size = new System.Drawing.Size(70, 40);
             this.buttonUnlike.TabIndex = 37;
             this.buttonUnlike.Text = "Unlike";
             this.buttonUnlike.UseVisualStyleBackColor = true;
@@ -498,10 +454,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             // 
             // buttonUnlikeTime
             // 
-            this.buttonUnlikeTime.Location = new System.Drawing.Point(164, 41);
-            this.buttonUnlikeTime.Margin = new System.Windows.Forms.Padding(2);
+            this.buttonUnlikeTime.Location = new System.Drawing.Point(246, 63);
             this.buttonUnlikeTime.Name = "buttonUnlikeTime";
-            this.buttonUnlikeTime.Size = new System.Drawing.Size(180, 21);
+            this.buttonUnlikeTime.Size = new System.Drawing.Size(270, 32);
             this.buttonUnlikeTime.TabIndex = 38;
             this.buttonUnlikeTime.Text = "Unlike Chosen Post By Time";
             this.buttonUnlikeTime.UseVisualStyleBackColor = true;
@@ -526,11 +481,9 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.groupBoxNumOf.Controls.Add(this.numericUpDownCommentAtComments);
             this.groupBoxNumOf.Controls.Add(this.label9);
             this.groupBoxNumOf.Controls.Add(this.panel2);
-            this.groupBoxNumOf.Location = new System.Drawing.Point(15, 261);
-            this.groupBoxNumOf.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxNumOf.Location = new System.Drawing.Point(22, 402);
             this.groupBoxNumOf.Name = "groupBoxNumOf";
-            this.groupBoxNumOf.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxNumOf.Size = new System.Drawing.Size(690, 87);
+            this.groupBoxNumOf.Size = new System.Drawing.Size(1035, 134);
             this.groupBoxNumOf.TabIndex = 39;
             this.groupBoxNumOf.TabStop = false;
             this.groupBoxNumOf.Text = "Number of Likes / Comments  condition";
@@ -542,20 +495,39 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.groupBoxTime.Controls.Add(this.buttonUnlikeTime);
             this.groupBoxTime.Controls.Add(this.buttonPostTime);
             this.groupBoxTime.Controls.Add(this.buttonCommentTime);
-            this.groupBoxTime.Location = new System.Drawing.Point(15, 367);
-            this.groupBoxTime.Margin = new System.Windows.Forms.Padding(2);
+            this.groupBoxTime.Location = new System.Drawing.Point(22, 566);
             this.groupBoxTime.Name = "groupBoxTime";
-            this.groupBoxTime.Padding = new System.Windows.Forms.Padding(2);
-            this.groupBoxTime.Size = new System.Drawing.Size(690, 73);
+            this.groupBoxTime.Size = new System.Drawing.Size(1035, 112);
             this.groupBoxTime.TabIndex = 0;
             this.groupBoxTime.TabStop = false;
             this.groupBoxTime.Text = "Time condition";
             // 
+            // buttonUpdateText
+            // 
+            this.buttonUpdateText.Location = new System.Drawing.Point(556, 330);
+            this.buttonUpdateText.Name = "buttonUpdateText";
+            this.buttonUpdateText.Size = new System.Drawing.Size(160, 40);
+            this.buttonUpdateText.TabIndex = 40;
+            this.buttonUpdateText.Text = "Update Text Action";
+            this.buttonUpdateText.UseVisualStyleBackColor = true;
+            this.buttonUpdateText.Click += new System.EventHandler(this.buttonUpdateText_Click);
+            // 
+            // listBoxPending
+            // 
+            this.listBoxPending.FormattingEnabled = true;
+            this.listBoxPending.ItemHeight = 20;
+            this.listBoxPending.Location = new System.Drawing.Point(556, 40);
+            this.listBoxPending.Name = "listBoxPending";
+            this.listBoxPending.Size = new System.Drawing.Size(500, 284);
+            this.listBoxPending.TabIndex = 2;
+            this.listBoxPending.SelectedIndexChanged += new System.EventHandler(this.listBoxPending_SelectedIndexChanged);
+            // 
             // FormFacebookConditionally
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(712, 627);
+            this.ClientSize = new System.Drawing.Size(1068, 965);
+            this.Controls.Add(this.buttonUpdateText);
             this.Controls.Add(this.groupBoxTime);
             this.Controls.Add(this.groupBoxNumOf);
             this.Controls.Add(this.label13);
@@ -572,7 +544,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.Controls.Add(this.listBoxPosts);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FormFacebookConditionally";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Facebook Conditional Actions";
@@ -640,5 +611,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private System.Windows.Forms.GroupBox groupBoxNumOf;
         private System.Windows.Forms.GroupBox groupBoxTime;
         private List<System.Windows.Forms.ListBox> listBoxes = new List<System.Windows.Forms.ListBox>();
+        private System.Windows.Forms.Button buttonUpdateText;
+        private bool isAlreadyFlashed = false;
+
     }
 }

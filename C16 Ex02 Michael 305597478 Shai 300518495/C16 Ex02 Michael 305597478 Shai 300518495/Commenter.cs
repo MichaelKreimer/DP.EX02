@@ -7,7 +7,7 @@ using FacebookWrapper.ObjectModel;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public abstract class Commenter : Task
+    public abstract class Commenter : Task, ITextUpdateable
     {
         public string CommentText { get; set; }
 
@@ -23,6 +23,14 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.HandledPost.Comment(CommentText);
         }
 
-        //protected override abstract bool IsConditionSatisfied();
+        public override string GetTextOfTask()
+        {
+            return CommentText;
+        }
+
+        public void UpdateTextOfTask(string text)
+        {
+            this.CommentText = text;
+        }
     }
 }

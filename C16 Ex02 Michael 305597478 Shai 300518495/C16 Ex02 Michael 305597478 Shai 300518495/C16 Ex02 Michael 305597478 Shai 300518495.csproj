@@ -91,6 +91,7 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ITextUpdateable.cs" />
     <Compile Include="ListBoxProxy.cs">
       <SubType>Component</SubType>
     </Compile>

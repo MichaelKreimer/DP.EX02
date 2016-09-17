@@ -16,6 +16,8 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             }
             return IsSatisfied;
         }
+
+        public abstract string GetTextOfTask();
         protected abstract bool IsConditionSatisfied();
         protected abstract void InvokeAction();
     }

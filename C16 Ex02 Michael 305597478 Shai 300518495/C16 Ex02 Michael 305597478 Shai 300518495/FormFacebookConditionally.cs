@@ -269,7 +269,15 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 removeItemFromListBoxAsynchronous(listBoxPending, task);
                 if (isListBoxPendingEmpty())
                 {
-                    resetListBoxesBackColor();
+                    if (isAlreadyFlashed == false)
+                    {
+                        isAlreadyFlashed = true;
+                        resetListBoxesBackColor();
+                    }
+                }
+                else
+                {
+                    isAlreadyFlashed = false;
                 }
             }
 
@@ -288,6 +296,22 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         {
             bool isEmpty = listBoxPending.Items.Count == 0 ? true : false;
             return isEmpty;
+        }
+
+        private void listBoxPending_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(listBoxPending.SelectedItem != null)
+            {
+                this.textBoxPrepareTextToSubmit.Text = (listBoxPending.SelectedItem as Task).GetTextOfTask();
+            }
+        }
+
+        private void buttonUpdateText_Click(object sender, EventArgs e)
+        {
+            if(listBoxPending.SelectedItem != null)
+            {
+                (listBoxPending.SelectedItem as ITextUpdateable).UpdateTextOfTask(this.textBoxPrepareTextToSubmit.Text);
+            }
         }
     }
 }

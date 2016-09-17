@@ -30,7 +30,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             lock (m_lockTimer)
             {
                 m_Timer = new Timer();
-                m_EndTime = DateTime.Now.AddSeconds(3);
+                m_EndTime = DateTime.Now.AddSeconds(2);
                 m_Timer.Interval = i_MiliSecsToWait;
                 m_Timer.Tick += OnTimedEvent;
                 m_Timer.Start();
@@ -56,7 +56,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 {
                     m_Timer.Stop();
                     base.ResetBackColor();
-                    //this.BackColor = Color.White;
                 }
             }
 

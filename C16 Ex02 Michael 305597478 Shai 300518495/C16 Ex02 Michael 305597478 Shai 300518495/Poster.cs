@@ -6,7 +6,7 @@ using System.Text;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    public class Poster : Task
+    public class Poster : Task, ITextUpdateable
     {
         private const int k_LengthOfString = 25;
         private User m_User;
@@ -38,6 +38,16 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private int finalLength()
         {
             return m_TextToPost.Length > k_LengthOfString ? k_LengthOfString : m_TextToPost.Length;
+        }
+
+        public override string GetTextOfTask()
+        {
+            return m_TextToPost;
+        }
+
+        public void UpdateTextOfTask(string text)
+        {
+            this.m_TextToPost = text;
         }
     }
 }

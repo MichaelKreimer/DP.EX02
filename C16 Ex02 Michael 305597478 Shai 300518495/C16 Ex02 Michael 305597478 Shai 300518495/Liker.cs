@@ -30,5 +30,10 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
                 this.HandledPost.Unlike();
             }
         }
+
+        public override string GetTextOfTask()
+        {
+            return string.Empty;
+        }
     }
 }
