@@ -58,7 +58,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.textBoxToSearch = new System.Windows.Forms.TextBox();
-            this.listBoxSpecial1 = new C16_Ex02_Michael_305597478_Shai_300518495.ListBoxSpecial();
+            this.listBoxSpecial1 = new C16_Ex02_Michael_305597478_Shai_300518495.ListBoxProxy();
             this.groupBoxSort.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxResultPhoto)).BeginInit();
             this.groupBoxResult.SuspendLayout();
@@ -488,6 +488,6 @@
         private System.Windows.Forms.RadioButton radioButtonLastWeek;
         private System.Windows.Forms.RadioButton radioButtonLastDay;
         private System.Windows.Forms.RadioButton radioButtonLastYear;
-        private ListBoxSpecial listBoxSpecial1;
+        private ListBoxProxy listBoxSpecial1;
     }
 }

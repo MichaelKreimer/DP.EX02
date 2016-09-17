@@ -1,5 +1,6 @@
 ﻿using FacebookWrapper;
 using FacebookWrapper.ObjectModel;
+using System.Collections.Generic;
 
 namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
@@ -35,7 +36,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormFacebookConditionally));
             this.dateTimePickerAction = new System.Windows.Forms.DateTimePicker();
-            this.listBoxPosts = new System.Windows.Forms.ListBox();
+            this.listBoxPosts = new ListBoxProxy();
             this.listBoxPending = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -596,7 +597,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         #endregion
 
         private System.Windows.Forms.DateTimePicker dateTimePickerAction;
-        private System.Windows.Forms.ListBox listBoxPosts;
+        private ListBoxProxy listBoxPosts;
         private System.Windows.Forms.ListBox listBoxPending;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
@@ -638,5 +639,6 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         private System.Windows.Forms.Button buttonUnlikeTime;
         private System.Windows.Forms.GroupBox groupBoxNumOf;
         private System.Windows.Forms.GroupBox groupBoxTime;
+        private List<System.Windows.Forms.ListBox> listBoxes = new List<System.Windows.Forms.ListBox>();
     }
 }

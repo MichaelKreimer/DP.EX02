@@ -91,11 +91,11 @@
     <Compile Include="FormLogin.Designer.cs">
       <DependentUpon>FormLogin.cs</DependentUpon>
     </Compile>
-    <Compile Include="ListBoxSpecial.cs">
+    <Compile Include="ListBoxProxy.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ListBoxSpecial.Designer.cs">
-      <DependentUpon>ListBoxSpecial.cs</DependentUpon>
+    <Compile Include="ListBoxProxy.Designer.cs">
+      <DependentUpon>ListBoxProxy.cs</DependentUpon>
     </Compile>
     <Compile Include="Task.cs" />
     <Compile Include="Liker.cs" />

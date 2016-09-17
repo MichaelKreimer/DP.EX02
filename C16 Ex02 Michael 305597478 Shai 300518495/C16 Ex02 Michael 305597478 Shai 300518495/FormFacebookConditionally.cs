@@ -28,6 +28,18 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
         {
             this.TaskFactory = i_TaskFactory;
             InitializeComponent();
+            this.listBoxes.Add(listBoxPosts);
+            this.listBoxes.Add(listBoxPending);
+            this.listBoxes.Add(listBoxDone);
+            listBoxPosts.BackColor = listBoxPending.BackColor = listBoxDone.BackColor = Color.HotPink;
+        }
+
+        private void resetListBoxesBackColoer()
+        {
+            foreach(ListBox listbox in listBoxes)
+            {
+                listbox.ResetBackColor();
+            }
         }
 
         private void FormFacebookConditionally_Shown(object sender, EventArgs e)
@@ -98,6 +110,7 @@ namespace C16_Ex02_Michael_305597478_Shai_300518495
 
         private void buttonDeleteAction_Click(object sender, EventArgs e)
         {
+            resetListBoxesBackColoer();
             object item = this.listBoxPending.SelectedItem;
             listBoxPending.Invoke(new Action(() =>
             {

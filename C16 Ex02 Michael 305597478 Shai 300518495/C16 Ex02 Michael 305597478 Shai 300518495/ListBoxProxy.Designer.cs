@@ -1,6 +1,6 @@
 ﻿namespace C16_Ex02_Michael_305597478_Shai_300518495
 {
-    partial class ListBoxSpecial
+    partial class ListBoxProxy
     {
         /// <summary> 
         /// Required designer variable.
